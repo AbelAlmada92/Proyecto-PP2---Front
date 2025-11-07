@@ -1,33 +1,30 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { RouterLink, Router, ActivatedRoute } from "@angular/router";
 
 // Importamos las rutas que necesitamos para el login
-import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
-import { CommonModule } from '@angular/common';
+//import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
-
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [ReactiveFormsModule, CommonModule],
+  imports: [ CommonModule, RouterLink],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })
-export class LoginComponent {
 
-  form: FormGroup;
-  error = '';
+export class LoginComponent implements OnInit {
+  tipoUsuario: string = "paciente";
 
-  constructor(private fb: FormBuilder, private auth: AuthService) {
-    this.form = this.fb.group({
-      username: [''],
-      password: [''],
+  constructor(private route: ActivatedRoute) { }
+
+  ngOnInit(): void {
+    this.route.queryParams.subscribe((params) => {
+      this.tipoUsuario = params['tipo'] || 'paciente';
+      console.log('Tipo de usuario:', this.tipoUsuario);
     });
   }
-    onSubmit() {
-    const { username, password } = this.form.value;
-    if (!this.auth.login(username, password)) {
-      this.error = 'Usuario o contraseña incorrectos';
-    }
+  onSubmit() {
   }
 }

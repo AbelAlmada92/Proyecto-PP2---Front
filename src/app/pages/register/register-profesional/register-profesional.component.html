@@ -1,0 +1,68 @@
+<div class="contenedor">
+  <div class="register-card">
+    <h2>Registro de Profesional</h2>
+    <p>Crea tu cuenta para crear historiales medicos</p>
+
+    <form class="register-form">
+      <div class="form-seccion">
+        <h2>Información Profesional</h2>
+
+        <div class="form-grupo">
+          <label>Número de Matrícula *</label>
+          <input type="text" class="form-input" required>
+        </div>
+
+        <div class="form-grupo">
+          <label>Institución de Trabajo</label>
+          <input type="text" placeholder="Hospital o clínica" class="form-input">
+        </div>
+      </div>
+
+      <div class="form-section">
+        <h2>Información Personal</h2>
+
+          <div class="form-grupo">
+            <label>Nombre *</label>
+            <input type="text" placeholder="Tu nombre" class="form-input" required>
+          </div>
+
+          <div class="form-grupo">
+            <label>Apellido *</label>
+            <input type="text" placeholder="Tu apellido" class="form-input" required>
+          </div>
+
+        <div class="form-grupo">
+          <label>Documento *</label>
+          <input type="text" placeholder="000000000" class="form-input" required>
+        </div>
+        <div class="form-grupo">
+          <label>Email *</label>
+          <input type="email" placeholder="tu@email.com" class="form-input" required>
+        </div>
+        <div class="form-grupo">
+          <label>Teléfono de Contacto</label>
+          <input type="tel" placeholder="+00 00 00000000" class="form-input">
+        </div>
+      </div>
+
+      <div class="form-section">
+        <h2>Credenciales de Acceso</h2>
+
+        <div class="form-grupo">
+          <label>Contraseña *</label>
+          <input type="password" placeholder="Mínimo 8 caracteres" class="form-input" required>
+        </div>
+
+        <div class="form-grupo">
+          <label>Confirmar Contraseña *</label>
+          <input type="password" placeholder="Repite tu contraseña" class="form-input" required>
+        </div>
+      </div>
+
+      <div class="botones">
+        <button type="submit" class="register">Crear cuenta</button>
+        <button type="button" class="back" routerLink="/register">← Volver</button>
+      </div>
+    </form>
+  </div>
+</div>

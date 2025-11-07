@@ -1,0 +1,23 @@
+<div class="contenedor">
+  <div class="seleccion">
+    <h1>Sistema de historial clínico</h1>
+    <p>Seleccione su tipo de usuario</p>
+
+    <div class="opciones-usuario">
+      <div class="card" (click)="selectPaciente()">
+        <h3>Paciente</h3>
+        <p>Accede a tu historial</p>
+      </div>
+      
+      <div class="card" (click)="selectProfesional()">
+        <h3>Profesional</h3>
+        <p>Médico o enfermero</p>
+      </div>
+      
+      <div class="register">
+        <p>¿No estás registrado?</p>
+        <button class="register-button" routerLink="/register">Registrarse</button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -13,8 +13,9 @@ header {
 
     img {
         border-radius: 100%;
-        padding: 1rem;
         border: 2px solid #79B4B7;
+        width: 50px;
+        height: 50px;
     }
 
     .btn-buscar {
@@ -54,9 +55,7 @@ header {
     .seccion-datos {
         margin: 20px;
         height: 90%;
-        padding: 25px;
         width: 95%;
-        border: #79B4B7 2px solid;
         border-radius: 20px;
 
         .botones {
@@ -72,21 +71,43 @@ header {
             border-right: #FEFBF3 2px solid;
         }
 
+        .btn-2 {
+            background-color: #8585fd;
+        }
+
         .btn-3 {
             border-top-right-radius: 20px;
             border-left: #FEFBF3 2px solid;
+            background-color: #fa8181;
         }
 
         .acordeon {
-
             mat-expansion-panel {
                 padding: 20px;
+            }
+
+            mat-expansion-panel,
+            mat-expansion-panel-header,
+            mat-panel-title,
+            mat-panel-description,
+            p,
+            strong {
+                background-color: white;
+                
+            }
+            mat-expansion-panel-header:hover{
+                background-color: transparent;
             }
         }
     }
 
     .mat-expansion-panel-spacing {
         margin: 0 !important;
+    }
+
+    .mat-expansion-panel-header-description {
+        justify-content: space-between;
+
     }
 
     button {

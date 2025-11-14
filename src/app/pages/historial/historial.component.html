@@ -1,37 +1,46 @@
-<!--<header>
-    <img src="" alt="1">
-    <div class="btn-buscar" routerLink="/historial">
-        <p>HISTORIAL</p>
+<header>
+    <img src="https://imgs.search.brave.com/mDztPWayQWWrIPAy2Hm_FNfDjDVgayj73RTnUIZ15L0/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly90NC5m/dGNkbi5uZXQvanBn/LzAyLzE1Lzg0LzQz/LzM2MF9GXzIxNTg0/NDMyNV90dFg5WWlJ/SXllYVI3TmU2RWFM/TGpNQW15NEd2UEM2/OS5qcGc"
+        alt="1">
+    <div class="btn-buscar" routerLink="/page-paciente">
+        <p>PERFIL</p>
     </div>
 </header>
 <div class="contenedor">
     <div class="seccion-datos">
         <div class="botones">
             <button class="btn-1">CREAR</button>
-            <button>ELIMINAR</button>
-            <button class="btn-3">EDITAR</button>
+            <button class="btn-2">EDITAR</button>
+            <button class="btn-3">ELIMINAR</button>
         </div>
         <div class="acordeon">
             <mat-accordion>
                 <mat-expansion-panel (opened)="panelOpenState.set(true)" (closed)="panelOpenState.set(false)">
                     <mat-expansion-panel-header>
-                        <mat-panel-title> Titulo historial 1 - 01/01/2025</mat-panel-title>
+                        <mat-panel-title> Titulo Diagnostico</mat-panel-title>
                         <mat-panel-description>
-                            {{panelOpenState() ? 'abrir' : 'cerrar'}} descripcion
+                            Nombre del profesional: aaaaaa
+                            <p>01/01/2025</p>
                         </mat-panel-description>
                     </mat-expansion-panel-header>
-                    <h4>Nombre Profesional</h4>
                     <p>
-                        Se detecto ... debido a codear mucho 
                         <br>
-                        Se receta: paracetamol cada 8 hs.
+                        <strong>DIAGNOSTICO:</strong>
+                        <br>
+                        Se detecto... 
+                        <br>
+                        Se receta:
+                        <br>
+                        <strong>NOTA:</strong>
+                        <br>
+                        
                     </p>
                 </mat-expansion-panel>
                 <mat-expansion-panel (opened)="panelOpenState.set(true)" (closed)="panelOpenState.set(false)">
                     <mat-expansion-panel-header>
                         <mat-panel-title> Titulo historial 2 </mat-panel-title>
                         <mat-panel-description>
-                            Currently I am {{panelOpenState() ? 'open' : 'closed'}}
+                            Nombre del profesional: Perez Pablo
+                            <p>25/12/2024</p>
                         </mat-panel-description>
                     </mat-expansion-panel-header>
                     <p>I'm visible because I am open</p>
@@ -40,4 +49,4 @@
         </div>
     </div>
     <button (click)="logout()">CERRAR SESION</button>
-</div>-->
+</div>

@@ -24,7 +24,6 @@ h1 {
 
 p {
     color: #979797;
-    margin-bottom: 30px;
 }
 
 .opciones-usuario {
@@ -32,6 +31,7 @@ p {
     gap: 20px;
     justify-content: center;
     flex-wrap: wrap;
+    margin-top: 10px;
 }
 
 .card {

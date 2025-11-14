@@ -110,7 +110,7 @@ header {
     button {
         border: none;
         width: 100%;
-        height: 10%;
+        height: 10vh;
         align-items: center;
         justify-content: center;
         cursor: pointer;

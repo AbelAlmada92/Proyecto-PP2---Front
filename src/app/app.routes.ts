@@ -10,6 +10,7 @@ import { RegisterProfesionalComponent } from './pages/register/register-profesio
 import { RegisterPacienteComponent } from './pages/register/register-paciente/register-paciente.component';
 import { PageProfesionalComponent } from './pages/page-profesional/page-profesional.component';
 import { PagePacienteComponent } from './pages/page-paciente/page-paciente.component';
+import { HistorialComponent } from './pages/historial/historial.component';
 import path from 'path';
 // Rutas de los componentes.
 export const routes: Routes = [
@@ -23,5 +24,6 @@ export const routes: Routes = [
   { path: 'home', component: HomeComponent, canActivate: [authGuard] },
   {path: 'page-profesional', component: PageProfesionalComponent},
   {path: 'page-paciente', component: PagePacienteComponent},
+  {path: 'historial', component: HistorialComponent},
   { path: '**', redirectTo: '/seleccion-rol' },
 ];

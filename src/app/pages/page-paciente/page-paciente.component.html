@@ -1,0 +1,134 @@
+<header>
+    <img src="https://imgs.search.brave.com/mDztPWayQWWrIPAy2Hm_FNfDjDVgayj73RTnUIZ15L0/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly90NC5m/dGNkbi5uZXQvanBn/LzAyLzE1Lzg0LzQz/LzM2MF9GXzIxNTg0/NDMyNV90dFg5WWlJ/SXllYVI3TmU2RWFM/TGpNQW15NEd2UEM2/OS5qcGc" alt="1" (click)="irAPerfil()">
+    <div class="btn-buscar" (click)="irAHistorial()">
+        <p>HISTORIAL</p>
+    </div>
+</header>
+<div class="contenedor">
+    <div class="seccion-datos">
+        <div class="acordeon">
+            <mat-accordion>
+                <mat-expansion-panel (opened)="panelOpenState.set(true)" (closed)="panelOpenState.set(false)">
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>DATOS DEL USUARIO</mat-panel-title>
+                        <mat-panel-description>
+                            Información personal
+                        </mat-panel-description>
+                    </mat-expansion-panel-header>
+                    
+                    <div class="contenedor-datos">
+                        <div class="datos">
+                            <label>
+                                <h2>Nombre</h2>
+                                <p>{{usuario?.nombre || 'No especificado'}}</p>
+                            </label>
+                        </div>
+                        <div class="datos">
+                            <label>
+                                <h2>F. nacimiento</h2>
+                                <p>{{ usuario?.fechaNacimiento || 'No especificado' }}</p>
+                            </label>
+                        </div>
+                        <div class="datos">
+                            <label>
+                                <h2>DNI</h2>
+                                <p>{{ usuario?.dni || 'No especificado' }}</p>
+                            </label>
+                        </div>
+                        <div class="datos">
+                            <label>
+                                <h2>Genero</h2>
+                                <p>{{ usuario?.genero || 'No especificado' }}</p>
+                            </label>
+                        </div>
+                        <div class="datos">
+                            <label>
+                                <h2>Telefono</h2>
+                                <p>1111111111</p>
+                            </label>
+                        </div>
+                        <div class="datos">
+                            <label>
+                                <h2>Direccion</h2>
+                                <p>{{ usuario?.direccion || 'No especificado' }}</p>
+                            </label>
+                        </div>
+                    </div>
+                </mat-expansion-panel>
+
+                <mat-expansion-panel (opened)="panelOpenState.set(true)" (closed)="panelOpenState.set(false)">
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>ANTECEDENTES PERSONALES</mat-panel-title>
+                        <mat-panel-description>
+                            Historial médico
+                        </mat-panel-description>
+                    </mat-expansion-panel-header>
+                    
+                    <div class="contenedor-datos">
+                        <div class="datos">
+                            <label>
+                                <h2>Alergias</h2>
+                                <p>{{ usuario?.alergias || 'No especificado' }}</p>
+                            </label>
+                        </div>
+                        <div class="datos">
+                            <label>
+                                <h2>Enfermedades crónicas</h2>
+                                <p>{{ usuario?.enfermedadesCronicas || 'No especificado' }}</p>
+                            </label>
+                        </div>
+                        <div class="datos">
+                            <label>
+                                <h2>Medicación actual</h2>
+                                <p>{{ usuario?.medicacionActual || 'No especificado' }}</p>
+                            </label>
+                        </div>
+                        <div class="datos">
+                            <label>
+                                <h2>Cirugías previas</h2>
+                                <p>{{ usuario?.cirugiasPrevias || 'No especificado' }}</p>
+                            </label>
+                        </div>
+                        <div class="datos">
+                            <label>
+                                <h2>Antecedentes familiares</h2>
+                                <p>{{ usuario?.antecedentesFamiliares || 'No especificado' }}</p>
+                            </label>
+                        </div>
+                    </div>
+                </mat-expansion-panel>
+
+                <mat-expansion-panel (opened)="panelOpenState.set(true)" (closed)="panelOpenState.set(false)">
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>CONTACTO DE EMERGENCIA</mat-panel-title>
+                        <mat-panel-description>
+                            Datos de contacto
+                        </mat-panel-description>
+                    </mat-expansion-panel-header>
+                    
+                    <div class="contenedor-datos">
+                        <div class="datos">
+                            <label>
+                                <h2>Nombre</h2>
+                                <p>{{ usuario?.contactoEmergencia?.nombre || 'No especificado' }}</p>
+                            </label>
+                        </div>
+                        <div class="datos">
+                            <label>
+                                <h2>Parentesco</h2>
+                                <p>{{ usuario?.contactoEmergencia?.parentesco || 'No especificado'}}</p>
+                            </label>
+                        </div>
+                        <div class="datos">
+                            <label>
+                                <h2>Teléfono</h2>
+                                <p>{{ usuario?.contactoEmergencia?.parentesco || 'No especificado'}}</p>
+                            </label>
+                        </div>
+                    </div>
+                </mat-expansion-panel>
+            </mat-accordion>
+        </div>
+    </div>
+    <button (click)="logout()">CERRAR SESION</button>
+</div>

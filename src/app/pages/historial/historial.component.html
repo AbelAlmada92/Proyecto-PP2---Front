@@ -1,0 +1,43 @@
+<header>
+    <img (click)="irAPerfil()" 
+         src="https://imgs.search.brave.com/mDztPWayQWWrIPAy2Hm_FNfDjDVgayj73RTnUIZ15L0/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly90NC5m/dGNkbi5uZXQvanBn/LzAyLzE1Lzg0LzQz/LzM2MF9GXzIxNTg0/NDMyNV90dFg5WWlJ/SXllYVI3TmU2RWFM/TGpNQW15NEd2UEM2/OS5qcGc"
+        alt="1" style="cursor: pointer;">
+    <div class="btn-buscar" routerLink="/page-paciente">
+        <p>PERFIL</p>
+    </div>
+</header>
+<div class="contenedor">
+    <div class="seccion-datos">
+        <div class="botones">
+            <button *ngIf="esProfesional" class="btn-1" (click)="openCrearDiagnostico()">CREAR</button>
+            <button *ngIf="esProfesional" class="btn-2" (click)="openEditarDiagnostico()">EDITAR</button>
+            <button *ngIf="esProfesional" class="btn-3" (click)="openEliminarDiagnostico()">ELIMINAR</button>
+        </div>
+        <div class="acordeon">
+            <mat-accordion>
+                <mat-expansion-panel *ngFor="let diagnostico of diagnosticos" 
+                                    (opened)="panelOpenState.set(true)" 
+                                    (closed)="panelOpenState.set(false)">
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>{{ diagnostico.titulo }}</mat-panel-title>
+                        <mat-panel-description>
+                            Nombre del profesional: {{ nombreProfesional }}
+                            <p>{{ diagnostico.fecha | date:'dd/MM/yyyy' }}</p>
+                        </mat-panel-description>
+                    </mat-expansion-panel-header>
+                    <p>
+                        <br>
+                        <strong>DIAGNOSTICO:</strong>
+                        <br>
+                        {{ diagnostico.diagnostico }}
+                        <br>
+                        <strong>NOTA:</strong>
+                        <br>
+                        {{ diagnostico.nota }}
+                    </p>
+                </mat-expansion-panel>
+            </mat-accordion>
+        </div>
+    </div>
+    <button (click)="logout()">CERRAR SESION</button>
+</div>

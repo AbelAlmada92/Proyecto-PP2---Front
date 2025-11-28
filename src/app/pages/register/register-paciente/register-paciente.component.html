@@ -1,0 +1,78 @@
+<div class="contenedor">
+  <div class="register-card">
+    <h2>Registro de Paciente</h2>
+    <p>Crea tu cuenta para acceder a tu historial médico</p>
+
+    <form class="register-form">
+      <div class="form-seccion">
+        <h2>Información Personal</h2>
+
+        <div class="form-grupo">
+          <label>Nombres *</label>
+          <input type="text" placeholder="Nombres" class="form-input" required>
+        </div>
+
+        <div class="form-grupo">
+          <label>Apellido *</label>
+          <input type="text" placeholder="Tu apellido" class="form-input" required>
+        </div>
+
+
+        <div class="form-grupo">
+          <label>Fecha de Nacimiento *</label>
+          <input type="date" class="form-input" required>
+        </div>
+        <div class="form-grupo">
+          <label>Documento *</label>
+          <input type="text" placeholder="000000000" class="form-input" required>
+        </div>
+
+        <div class="form-grupo">
+          <label>Género *</label>
+          <select class="form-input genero" required>
+            <option value="" hidden>Seleccionar</option>
+            <option value="male">Masculino</option>
+            <option value="female">Femenino</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-seccion">
+        <h2>Información de Contacto</h2>
+
+        <div class="form-grupo">
+          <label>Email *</label>
+          <input type="email" placeholder="tu@email.com" class="form-input" required>
+        </div>
+
+        <div class="form-grupo">
+          <label>Teléfono</label>
+          <input type="tel" placeholder="+00 00 00000000" class="form-input">
+        </div>
+
+        <div class="form-grupo">
+          <label>Dirección</label>
+          <input type="text" placeholder="Tu dirección" class="form-input">
+        </div>
+      </div>
+      <div class="form-seccion">
+        <h2>Credenciales de Acceso</h2>
+
+        <div class="form-grupo">
+          <label>Contraseña *</label>
+          <input type="password" placeholder="Mínimo 8 caracteres" class="form-input" required>
+        </div>
+
+        <div class="form-grupo">
+          <label>Confirmar Contraseña *</label>
+          <input type="password" placeholder="Repite tu contraseña" class="form-input" required>
+        </div>
+      </div>
+
+      <div class="botones">
+        <button type="submit" class="register">Crear Cuenta</button>
+        <button type="button" class="back" routerLink="/register">← Volver</button>
+      </div>
+    </form>
+  </div>
+</div>

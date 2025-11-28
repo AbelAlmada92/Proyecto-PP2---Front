@@ -1,0 +1,72 @@
+<div class="dialog-header">
+    <h2>
+        <span *ngIf="pasoActual === 'lista'">SELECCIONE DIAGNOSTICO</span>
+        <span *ngIf="pasoActual === 'formulario'">EDITAR DIAGNOSTICO</span>
+    </h2>
+    <button mat-icon-button (click)="cancelar()" class="close-button">
+        <mat-icon>close</mat-icon>
+    </button>
+</div>
+
+<div class="dialog-content">
+    <div *ngIf="pasoActual === 'lista'" class="lista-diagnosticos">
+        <p>Selecciona el diagnóstico que desea editar:</p>
+        
+        <mat-list>
+            <mat-list-item 
+                *ngFor="let diagnostico of diagnosticos" 
+                (click)="seleccionarDiagnostico(diagnostico)"
+                class="diagnostico-item">
+                <div class="diagnostico-info">
+                    <h4>{{ diagnostico.titulo }}</h4>
+                    <small>{{ diagnostico.fecha | date:'dd/MM/yyyy' }}</small>
+                </div>
+            </mat-list-item>
+        </mat-list>
+    </div>
+
+    <div *ngIf="pasoActual === 'formulario'" class="formulario-edicion">
+        <div class="nav-back">
+            <button mat-button (click)="volverALista()" class="back-button">
+                <mat-icon>arrow_back</mat-icon>
+                Volver a la lista
+            </button>
+        </div>
+
+        <form class="example-form" [formGroup]="editarForm">
+            <mat-form-field class="example-full-width">
+                <mat-label>Título del Diagnóstico</mat-label>
+                <input matInput formControlName="titulo" placeholder="Ej: Control de rutina">
+                <mat-error *ngIf="editarForm.get('titulo')?.hasError('required')">
+                    El título es requerido
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="example-full-width">
+                <mat-label>Diagnóstico</mat-label>
+                <textarea matInput formControlName="diagnostico" 
+                        placeholder="Ej: Se detectó...&#10;Se receta..." 
+                        rows="4"></textarea>
+                <mat-error *ngIf="editarForm.get('diagnostico')?.hasError('required')">
+                    El diagnóstico es requerido
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="example-full-width">
+                <mat-label>Nota</mat-label>
+                <textarea matInput formControlName="nota" 
+                        placeholder="Observaciones adicionales..." 
+                        rows="3"></textarea>
+            </mat-form-field>
+
+            <div class="button-container">
+                <button mat-raised-button color="primary" 
+                        (click)="guardarEdicion()"
+                        [disabled]="!editarForm.valid">
+                    Guardar Cambios
+                </button>
+                <button mat-button type="button" (click)="volverALista()">Cancelar</button>
+            </div>
+        </form>
+    </div>
+</div>

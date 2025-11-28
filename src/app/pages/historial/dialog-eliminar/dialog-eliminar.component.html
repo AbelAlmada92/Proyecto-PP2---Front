@@ -1,0 +1,48 @@
+<div class="dialog-header">
+    <h2>ELIMINAR DIAGNOSTICO</h2>
+    <button mat-icon-button (click)="cancelar()" class="close-button">
+        <mat-icon>close</mat-icon>
+    </button>
+</div>
+
+<div class="dialog-content">
+    <div class="eliminar-instructions">
+        <p>Selecciona los diagnósticos que deseas eliminar:</p>
+
+        <div class="seleccionar-todos">
+            <button mat-button (click)="seleccionarTodos()" class="select-all-button">
+                <mat-icon>{{ diagnosticosSeleccionados.size === diagnosticos.length ? 'check_box' :
+                    'check_box_outline_blank' }}</mat-icon>
+                {{ textoSeleccionarTodos }}
+            </button>
+            <span class="contador-seleccionados">
+                {{ diagnosticosSeleccionados.size }} seleccionado(s)
+            </span>
+        </div>
+    </div>
+
+    <div class="lista-diagnosticos">
+        <mat-list>
+            <mat-list-item *ngFor="let diagnostico of diagnosticos" (click)="toggleSeleccion(diagnostico.id!)"
+                class="diagnostico-item">
+
+                <div class="diagnostico-info">
+                    <mat-checkbox color="warn" [checked]="estaSeleccionado(diagnostico.id!)"
+                        (click)="$event.stopPropagation(); toggleSeleccion(diagnostico.id!)">
+                    </mat-checkbox>
+                    <h4>{{ diagnostico.titulo }}</h4>
+                    <small>{{ diagnostico.fecha | date:'dd/MM/yyyy' }}</small>
+                </div>
+            </mat-list-item>
+        </mat-list>
+    </div>
+
+    <div class="button-container">
+        <button mat-button type="button" (click)="cancelar()">Cancelar</button>
+        <button mat-raised-button color="warn" (click)="eliminarSeleccionados()"
+            [disabled]="diagnosticosSeleccionados.size === 0" class="eliminar-button">
+            <mat-icon>delete</mat-icon>
+            Eliminar ({{ diagnosticosSeleccionados.size }})
+        </button>
+    </div>
+</div>

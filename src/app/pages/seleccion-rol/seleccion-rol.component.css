@@ -23,11 +23,10 @@ h1 {
 }
 
 p {
-    color: #8b8b8b;
-    margin-bottom: 30px;
+    color: #979797;
 }
 
-.opciones {
+.opciones-usuario {
     display: flex;
     gap: 20px;
     justify-content: center;
@@ -36,10 +35,8 @@ p {
 }
 
 .card {
-    max-width: 500px;
-    width: 100%;
-    padding: 20px 20px;
-    padding-bottom: 5px;
+    min-width: 200px;
+    padding: 30px 20px;
     border: 2px solid #e0e0e0;
     border-radius: 15px;
     cursor: pointer;
@@ -57,39 +54,37 @@ p {
     }
 }
 
-.list {
-    list-style: none;
-    padding: 0;
-    margin: 20px;
-    text-align: center;
-
-    li {
-        color: #6666669c;
-        margin-bottom: 8px;
-        font-size: 0.9rem;
-    }
-}
-
 .card:hover {
     transform: translateY(-2px);
     border-color: #8b8b8b;
 }
 
-.back {
-    min-width: 200px;
-    padding: 12px 30px;
-    margin-top: 20px;
-    border: 1px solid #79B4B7;
-    border-radius: 25px;
-    cursor: pointer;
-    font-size: 1rem;
-    transition: all 0.3s ease;
-    background: #79B4B7;
-    color: white;
-}
+.register {
+    margin-top: 2px;
 
-.back:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgb(255, 255, 255);
-    border-color: #609092;
+    p {
+        margin-top: 1px;
+        margin-bottom: 2px;
+        font-size: 1rem;
+        color: #8b8b8b;
+    }
+
+    button {
+        min-width: 200px;
+        padding: 12px 30px;
+        margin-top: 10px;
+        border: 1px solid #79B4B7;
+        border-radius: 25px;
+        cursor: pointer;
+        font-size: 1rem;
+        transition: all 0.3s ease;
+        background-color: #79B4B7;
+        color: white;
+    }
+
+    button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgb(255, 255, 255);
+        border-color: #609092;
+    }
 }

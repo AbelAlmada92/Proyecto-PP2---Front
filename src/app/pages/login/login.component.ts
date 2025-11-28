@@ -1,33 +1,66 @@
-import { Component } from '@angular/core';
-
-// Importamos las rutas que necesitamos para el login
-import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RouterLink, Router, ActivatedRoute } from "@angular/router";
+import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
-
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [ReactiveFormsModule, CommonModule],
+  imports: [CommonModule, RouterLink, ReactiveFormsModule],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit {
+  tipoUsuario: string = "paciente";
+  loginForm: FormGroup;
 
-  form: FormGroup;
-  error = '';
-
-  constructor(private fb: FormBuilder, private auth: AuthService) {
-    this.form = this.fb.group({
-      username: [''],
-      password: [''],
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+    private authService: AuthService,
+    private fb: FormBuilder
+  ) {
+    this.loginForm = this.fb.group({
+      dni: ['', Validators.required],
+      password: ['', Validators.required],
+      matricula: ['', Validators.required]
     });
   }
-    onSubmit() {
-    const { username, password } = this.form.value;
-    if (!this.auth.login(username, password)) {
-      this.error = 'Usuario o contraseña incorrectos';
+
+  ngOnInit(): void {
+    this.route.queryParams.subscribe((params) => {
+      this.tipoUsuario = params['tipo'] || 'paciente';
+
+      const matriculaControl = this.loginForm.get('matricula');
+      if (this.tipoUsuario === 'profesional') {
+        matriculaControl?.setValidators([Validators.required]);
+      } else {
+        matriculaControl?.clearValidators();
+      }
+      matriculaControl?.updateValueAndValidity();
+    });
+  }
+
+  onSubmit() {
+    if (this.loginForm.valid) {
+      const { dni, password, matricula } = this.loginForm.value;
+
+      if (this.tipoUsuario === 'paciente') {
+        if (this.authService.login(dni, password)) {
+          this.router.navigate(['/page-paciente']);
+        } else {
+          alert('Credenciales incorrectas');
+        }
+      } else {
+        if (this.authService.login(dni, password, matricula)) {
+          this.router.navigate(['/page-profesional']);
+        } else {
+          alert('Credenciales incorrectas');
+        }
+      }
+    } else {
+      alert('Por favor complete todos los campos');
     }
   }
 }

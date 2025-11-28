@@ -1,1 +1,26 @@
-<p>register works!</p>
+<div class="contenedor">
+    <div class="seleccion">
+        <h1>Crear Cuenta</h1>
+        <p>¿Qué tipo de usuario eres?</p>
+
+        <div class="opciones">
+            <div class="card" (click)="pacienteRegister()">
+                <h3>Paciente</h3>
+                <p>Crea tu cuenta para acceder a tu historial médico</p>
+                <ul class="list">
+                    <li>✓ Accede a tu historial</li>
+                </ul>
+            </div>
+            <div class="card" (click)="profesionalRegister()">
+                <h3>Profesional de Salud</h3>
+                <p>Registro para profesionales</p>
+                <ul class="list">
+                    <li>✓ Accede a historiales de pacientes</li>
+                    <li>✓ Crea diagnósticos</li>
+                </ul>
+            </div>
+        </div>
+
+        <button class="back" routerLink="/">← Volver</button>
+    </div>
+</div>

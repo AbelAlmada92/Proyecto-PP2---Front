@@ -1,0 +1,125 @@
+* {
+    background-color: #FEFBF3;
+}
+
+header {
+    height: 10vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 20px;
+    border-bottom: 2px solid #79B4B7;
+    background-color: #FEFBF3;
+
+    img {
+        border-radius: 100%;
+        border: 2px solid #79B4B7;
+        width: 50px;
+        height: 50px;
+    }
+
+    .btn-buscar {
+        border-left: 2px solid #79B4B7;
+        width: 7rem;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+
+        p {
+            color: #79B4B7;
+            font-size: 1rem;
+            font-weight: bold;
+        }
+    }
+
+    .btn-buscar:hover {
+        background-color: #79B4B7;
+
+        p {
+            color: #FEFBF3;
+            background-color: #79B4B7;
+        }
+    }
+}
+
+.contenedor {
+    height: 90vh;
+    max-width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: 'Roboto', sans-serif;
+
+    .seccion-datos {
+        margin: 20px;
+        height: 90%;
+        width: 95%;
+        border-radius: 20px;
+
+        .botones {
+            display: flex;
+
+            button {
+                height: 2rem;
+            }
+        }
+
+        .btn-1 {
+            border-top-left-radius: 20px;
+            border-right: #FEFBF3 2px solid;
+        }
+
+        .btn-2 {
+            background-color: #8585fd;
+        }
+
+        .btn-3 {
+            border-top-right-radius: 20px;
+            border-left: #FEFBF3 2px solid;
+            background-color: #fa8181;
+        }
+
+        .acordeon {
+            mat-expansion-panel {
+                padding: 20px;
+            }
+
+            mat-expansion-panel,
+            mat-expansion-panel-header,
+            mat-panel-title,
+            mat-panel-description,
+            p,
+            strong {
+                background-color: white;
+                
+            }
+            mat-expansion-panel-header:hover{
+                background-color: transparent;
+            }
+        }
+    }
+
+    .mat-expansion-panel-spacing {
+        margin: 0 !important;
+    }
+
+    .mat-expansion-panel-header-description {
+        justify-content: space-between;
+
+    }
+
+    button {
+        border: none;
+        width: 100%;
+        height: 10%;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        background-color: #79B4B7;
+        color: #FEFBF3;
+        font-size: 1rem;
+        font-weight: bold;
+    }
+}

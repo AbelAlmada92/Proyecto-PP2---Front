@@ -1,0 +1,45 @@
+:host {
+    display: block;
+}
+
+.dialog-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background: #79B4B7;
+}
+
+.dialog-header h2 {
+    margin: 0;
+    color: #FEFBF3;
+}
+
+.close-button {
+    color: #FEFBF3;
+}
+
+.dialog-content {
+    padding: 20px;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.example-form {
+    width: 100%;
+}
+
+.example-full-width {
+    width: 100%;
+}
+
+.button-container {
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+    margin-top: 20px;
+}
+
+mat-form-field {
+    margin-bottom: 15px;
+}

@@ -39,6 +39,7 @@ header {
         }
     }
 }
+
 .contenedor {
     min-height: 90vh;
     max-width: 100%;
@@ -58,6 +59,24 @@ header {
     flex-direction: column;
 }
 
+.datos {
+    border-bottom: 1px solid rgb(177, 177, 177);
+    
+    h2 {
+        font-size: 0.7rem;
+        color: #9D9D9D;
+            margin: 0;
+    }
+
+    p {
+        font-size: 1.1rem;
+        margin-top: 10px;
+        margin-bottom: 5px;
+    }
+}
+.mat-expansion-panel-spacing {
+    margin:  0;
+}
 .acordeon {
     flex: 1;
     overflow-y: auto;
@@ -75,6 +94,7 @@ button {
     font-size: 1rem;
     font-weight: bold;
 }
-.mat-expansion-panel-header{
+
+.mat-expansion-panel-header {
     padding: 40px;
 }

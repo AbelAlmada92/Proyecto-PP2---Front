@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { HomeComponent } from './home.component';
+import { DialogEliminarComponent } from './dialog-eliminar.component';
 
-describe('HomeComponent', () => {
-  let component: HomeComponent;
-  let fixture: ComponentFixture<HomeComponent>;
+describe('DialogEliminarComponent', () => {
+  let component: DialogEliminarComponent;
+  let fixture: ComponentFixture<DialogEliminarComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [HomeComponent]
+      imports: [DialogEliminarComponent]
     })
     .compileComponents();
     
-    fixture = TestBed.createComponent(HomeComponent);
+    fixture = TestBed.createComponent(DialogEliminarComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -1,0 +1,40 @@
+<div class="dialog-header">
+    <h2>CREAR DIAGNOSTICO</h2>
+    <button mat-icon-button (click)="cancelar()" class="close-button">
+        <mat-icon>close</mat-icon>
+    </button>
+</div>
+
+<div class="dialog-content">
+    <form class="example-form" [formGroup]="diagnosticoForm">
+        <mat-form-field class="example-full-width">
+            <mat-label>Título del Diagnóstico</mat-label>
+            <input matInput formControlName="titulo" placeholder="Ej: Presion baja">
+            <mat-error *ngIf="diagnosticoForm.get('titulo')?.hasError('required')">
+                El título es requerido
+            </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+            <mat-label>Diagnóstico</mat-label>
+            <textarea matInput formControlName="diagnostico" placeholder="Ej: Se detectó...&#10;Se receta..."
+                rows="2"></textarea>
+            <mat-error *ngIf="diagnosticoForm.get('diagnostico')?.hasError('required')">
+                El diagnóstico es requerido
+            </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+            <mat-label>Nota</mat-label>
+            <textarea matInput formControlName="nota" placeholder="Observaciones adicionales..." rows="2"></textarea>
+        </mat-form-field>
+
+        <div class="button-container">
+            <button mat-raised-button color="primary" (click)="guardarDiagnostico()"
+                [disabled]="!diagnosticoForm.valid">
+                Guardar Diagnóstico
+            </button>
+            <button mat-button type="button" (click)="cancelar()">Cancelar</button>
+        </div>
+    </form>
+</div>

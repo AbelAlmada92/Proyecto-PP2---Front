@@ -1,6 +1,6 @@
 <header>
-    <img src="https://imgs.search.brave.com/mDztPWayQWWrIPAy2Hm_FNfDjDVgayj73RTnUIZ15L0/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly90NC5m/dGNkbi5uZXQvanBn/LzAyLzE1Lzg0LzQz/LzM2MF9GXzIxNTg0/NDMyNV90dFg5WWlJ/SXllYVI3TmU2RWFM/TGpNQW15NEd2UEM2/OS5qcGc" alt="1">
-    <div class="btn-buscar" routerLink="/historial">
+    <img src="https://imgs.search.brave.com/mDztPWayQWWrIPAy2Hm_FNfDjDVgayj73RTnUIZ15L0/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly90NC5m/dGNkbi5uZXQvanBn/LzAyLzE1Lzg0LzQz/LzM2MF9GXzIxNTg0/NDMyNV90dFg5WWlJ/SXllYVI3TmU2RWFM/TGpNQW15NEd2UEM2/OS5qcGc" alt="1" (click)="irAPerfil()">
+    <div class="btn-buscar" (click)="irAHistorial()">
         <p>HISTORIAL</p>
     </div>
 </header>
@@ -20,25 +20,25 @@
                         <div class="datos">
                             <label>
                                 <h2>Nombre</h2>
-                                <p>Jose Perez</p>
+                                <p>{{usuario?.nombre || 'No especificado'}}</p>
                             </label>
                         </div>
                         <div class="datos">
                             <label>
                                 <h2>F. nacimiento</h2>
-                                <p>1/1/01</p>
+                                <p>{{ usuario?.fechaNacimiento || 'No especificado' }}</p>
                             </label>
                         </div>
                         <div class="datos">
                             <label>
                                 <h2>DNI</h2>
-                                <p>12345678</p>
+                                <p>{{ usuario?.dni || 'No especificado' }}</p>
                             </label>
                         </div>
                         <div class="datos">
                             <label>
                                 <h2>Genero</h2>
-                                <p>Masculino</p>
+                                <p>{{ usuario?.genero || 'No especificado' }}</p>
                             </label>
                         </div>
                         <div class="datos">
@@ -50,7 +50,7 @@
                         <div class="datos">
                             <label>
                                 <h2>Direccion</h2>
-                                <p>calle 123</p>
+                                <p>{{ usuario?.direccion || 'No especificado' }}</p>
                             </label>
                         </div>
                     </div>
@@ -68,31 +68,31 @@
                         <div class="datos">
                             <label>
                                 <h2>Alergias</h2>
-                                <p>Ninguna</p>
+                                <p>{{ usuario?.alergias || 'No especificado' }}</p>
                             </label>
                         </div>
                         <div class="datos">
                             <label>
                                 <h2>Enfermedades crónicas</h2>
-                                <p>No</p>
+                                <p>{{ usuario?.enfermedadesCronicas || 'No especificado' }}</p>
                             </label>
                         </div>
                         <div class="datos">
                             <label>
                                 <h2>Medicación actual</h2>
-                                <p>Ninguna</p>
+                                <p>{{ usuario?.medicacionActual || 'No especificado' }}</p>
                             </label>
                         </div>
                         <div class="datos">
                             <label>
                                 <h2>Cirugías previas</h2>
-                                <p>No</p>
+                                <p>{{ usuario?.cirugiasPrevias || 'No especificado' }}</p>
                             </label>
                         </div>
                         <div class="datos">
                             <label>
                                 <h2>Antecedentes familiares</h2>
-                                <p>No relevantes</p>
+                                <p>{{ usuario?.antecedentesFamiliares || 'No especificado' }}</p>
                             </label>
                         </div>
                     </div>
@@ -110,19 +110,19 @@
                         <div class="datos">
                             <label>
                                 <h2>Nombre</h2>
-                                <p>Maria Perez</p>
+                                <p>{{ usuario?.contactoEmergencia?.nombre || 'No especificado' }}</p>
                             </label>
                         </div>
                         <div class="datos">
                             <label>
                                 <h2>Parentesco</h2>
-                                <p>Madre</p>
+                                <p>{{ usuario?.contactoEmergencia?.parentesco || 'No especificado'}}</p>
                             </label>
                         </div>
                         <div class="datos">
                             <label>
                                 <h2>Teléfono</h2>
-                                <p>2222222222</p>
+                                <p>{{ usuario?.contactoEmergencia?.parentesco || 'No especificado'}}</p>
                             </label>
                         </div>
                     </div>

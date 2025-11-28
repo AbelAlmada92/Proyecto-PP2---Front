@@ -6,7 +6,7 @@
     <p *ngIf="tipoUsuario === 'profesional'">Acceso para médicos y enfermeros</p>
     <p *ngIf="tipoUsuario === 'paciente'">Acceso para pacientes</p>
     
-    <form (ngSubmit)="onSubmit()">
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
       <div class="form-grupo">
         <label>DNI:</label>
         <input type="text" placeholder="00000000" maxlength="9" required formControlName="dni">
@@ -23,8 +23,6 @@
       </div>
 
       <button class="ingreso" type="submit">Ingresar</button>
-      <button class="ingreso" routerLink="/page-profesional" *ngIf="tipoUsuario === 'profesional'">ir pag</button>
-      <button class="ingreso" routerLink="/page-paciente" *ngIf="tipoUsuario === 'paciente'">ir pag</button>
     </form>
 
     <button class="back" routerLink="/">← Volver</button>

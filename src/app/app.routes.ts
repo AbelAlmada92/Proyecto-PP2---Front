@@ -2,7 +2,6 @@ import { Routes } from '@angular/router';
 
 // Importamos componentes con rutas.
 import { LoginComponent } from './pages/login/login.component';
-import { HomeComponent } from './pages/home/home.component';
 import { SeleccionRolComponent } from './pages/seleccion-rol/seleccion-rol.component';
 import { authGuard } from './guard/auth.guard';
 import { RegisterComponent } from './pages/register/register.component';
@@ -21,7 +20,6 @@ export const routes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'register-paciente', component: RegisterPacienteComponent },
   { path: 'register-profesional', component: RegisterProfesionalComponent },
-  { path: 'home', component: HomeComponent, canActivate: [authGuard] },
   {path: 'page-profesional', component: PageProfesionalComponent},
   {path: 'page-paciente', component: PagePacienteComponent},
   {path: 'historial', component: HistorialComponent},

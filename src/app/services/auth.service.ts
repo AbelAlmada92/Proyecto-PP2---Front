@@ -1,83 +1,102 @@
 import { Injectable } from '@angular/core';
-
-// Ruta que se carga para que se autentique.
 import { Router } from '@angular/router';
 
-// Interfaz de registro
 interface User {
-  username: string;
+  dni?: string;
   password: string;
   role: 'paciente' | 'profesional';
   matricula?: string;
+  nombre?: string;
+  telefono?: string;
 }
-
 
 @Injectable({
   providedIn: 'root'
 })
-
 export class AuthService {
-
   private isAuthenticated = false;
-  constructor(private router: Router) { }
   private currentUser: User | null = null;
-  // Ingreso a la app  
+
+  private usuarioPaciente: User = {
+    dni: '123456',
+    password: 'paciente123',
+    role: 'paciente',
+    nombre: 'Pedro Lopez',
+    telefono: '1155443322'
+  };
+
+  private usuarioProfesional: User = {
+    dni: '654321',
+    password: 'pro123',
+    role: 'profesional',
+    matricula: '654321',
+    nombre: 'Marta Diaz',
+    telefono: '1166778899'
+  };
+
+  constructor(private router: Router) { }
+
+   buscarPacientePorDNI(dni: string): User | null {
+    if (dni === this.usuarioPaciente.dni) {
+      return this.usuarioPaciente;
+    }
+    return null;
+  }
   login(dni: string, password: string, matricula?: string): boolean {
     if (!matricula) {
-      // Para pacientes
-      if (this.loginPaciente(dni, password)) {
-        this.isAuthenticated = true;
-        //this.router.navigate(['/patient/dashboard']);
-        return true;
-      }
+      return this.loginPaciente(dni, password);
     } else {
-      // Para profesionales
-      if (this.loginProfesional(dni, password, matricula)) {
-        this.isAuthenticated = true;
-        //this.router.navigate(['/professional/dashboard']);
-        return true;
-      }
+      return this.loginProfesional(dni, password, matricula);
     }
-    // Retornar false si falla cualquier login
-    return false;
   }
+
   private loginPaciente(dni: string, password: string): boolean {
-    // Validación simple - reemplaza con tu lógica real
-    if (dni === '12345678' && password === '1234') {
-      this.currentUser = {
-        username: dni,
-        password: password,
-        role: 'paciente'
-      };
+    if (dni === this.usuarioPaciente.dni && password === this.usuarioPaciente.password) {
+      this.currentUser = this.usuarioPaciente;
+      this.isAuthenticated = true;
       return true;
     }
     return false;
   }
 
   private loginProfesional(dni: string, password: string, matricula: string): boolean {
-    // Validación simple - reemplaza con tu lógica real
-    if (dni === '87654321' && password === '1234' && matricula === 'MP12345') {
-      this.currentUser = {
-        username: dni,
-        password: password,
-        role: 'profesional',
-        matricula: matricula
-      };
+    if (dni === this.usuarioProfesional.dni && 
+        password === this.usuarioProfesional.password && 
+        matricula === this.usuarioProfesional.matricula) {
+      this.currentUser = this.usuarioProfesional;
+      this.isAuthenticated = true;
       return true;
     }
     return false;
   }
 
-  // Salida de la app
   logout(): void {
     this.isAuthenticated = false;
-    this.currentUser=null;
+    this.currentUser = null;
     this.router.navigate(['/seleccion-rol']);
   }
 
-  // Autenticador
   userAuthenticated(): boolean {
     return this.isAuthenticated;
   }
 
+  getCurrentUser(): User | null {
+    return this.currentUser;
+  }
+
+  esProfesional(): boolean {
+    return this.currentUser?.role === 'profesional';
+  }
+
+  esPaciente(): boolean {
+    return this.currentUser?.role === 'paciente';
+  }
+
+  getRole(): string | null {
+    return this.currentUser?.role || null;
+  }
+
+  getMatricula(): string | null {
+    return this.currentUser?.matricula || null;
+  }
 }

@@ -1,6 +1,7 @@
 <header>
-    <img src="https://imgs.search.brave.com/mDztPWayQWWrIPAy2Hm_FNfDjDVgayj73RTnUIZ15L0/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly90NC5m/dGNkbi5uZXQvanBn/LzAyLzE1Lzg0LzQz/LzM2MF9GXzIxNTg0/NDMyNV90dFg5WWlJ/SXllYVI3TmU2RWFM/TGpNQW15NEd2UEM2/OS5qcGc" alt="1">
-    <div class="btn-buscar" >
+    <img src="https://imgs.search.brave.com/mDztPWayQWWrIPAy2Hm_FNfDjDVgayj73RTnUIZ15L0/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly90NC5m/dGNkbi5uZXQvanBn/LzAyLzE1Lzg0LzQz/LzM2MF9GXzIxNTg0/NDMyNV90dFg5WWlJ/SXllYVI3TmU2RWFM/TGpNQW15NEd2UEM2/OS5qcGc"
+        alt="1">
+    <div class="btn-buscar" (click)="openBuscarPaciente()">
         <p>BUSCAR</p>
     </div>
 </header>
@@ -16,33 +17,33 @@
             <div class="datos">
                 <label>
                     <h2>Nombre</h2>
-                    <p>Jose</p>
+                    <p>{{ usuario?.nombre || 'No especificado' }}</p>
                 </label>
             </div>
             <div class="datos">
 
                 <label>
                     <h2>Matricula</h2>
-                    <p>123456</p>
+                    <p>{{ usuario?.matricula || 'No especificado' }}</p>
                 </label>
             </div>
             <div class="datos">
 
                 <label>
                     <h2>DNI</h2>
-                    <p>12345678</p>
+                    <p>{{ usuario?.dni || 'No especificado' }}</p>
                 </label>
             </div>
             <div class="datos">
                 <label>
                     <h2>Telefono</h2>
-                    <p>1111111111</p>
+                    <p>{{ usuario?.telefono || 'No especificado' }}</p>
                 </label>
             </div>
             <div class="datos">
                 <label>
                     <h2>Especialidad</h2>
-                    <p>asd</p>
+                    <p>{{ usuario?.especialidad || 'No especificado' }}</p>
                 </label>
             </div>
         </div>

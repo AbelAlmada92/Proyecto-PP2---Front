@@ -4,11 +4,13 @@ import { provideClientHydration } from '@angular/platform-browser';
 import { provideAnimations } from '@angular/platform-browser/animations';
 import { routes } from './app.routes';
 import { MatExpansionModule } from '@angular/material/expansion';
+import { provideHttpClient } from '@angular/common/http';
 export const appConfig: ApplicationConfig = {
   providers: [
       provideRouter(routes),
     provideClientHydration(),
     provideAnimations(), // Agregar esto
-    importProvidersFrom(MatExpansionModule) // Agregar esto para el acordeón
+    importProvidersFrom(MatExpansionModule), // Agregar esto para el acordeón
+    provideHttpClient(),
     ]
 };

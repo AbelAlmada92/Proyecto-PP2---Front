@@ -5,8 +5,9 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { CommonModule } from '@angular/common';
-import { Router } from '@angular/router';
 import { MatIcon } from '@angular/material/icon';
+import { PacienteService } from '../../../services/paciente.service';
+
 
 @Component({
   selector: 'app-dialog-buscar-paciente',
@@ -29,21 +30,38 @@ export class DialogBuscarPacienteComponent {
   constructor(
     private fb: FormBuilder,
     private dialogRef: MatDialogRef<DialogBuscarPacienteComponent>,
-    private router: Router
+    private pacienteService: PacienteService
   ) {
     this.buscarForm = this.fb.group({
-      dni: ['', [Validators.required, Validators.minLength(1), Validators.maxLength(10)]]
+      legajo: ['', [Validators.required, Validators.min(1)]]
     });
   }
 
   buscarPaciente(): void {
-    if (this.buscarForm.valid) {
-      const dniBuscado = this.buscarForm.get('dni')?.value;
-      this.dialogRef.close();
-      this.router.navigate(['/page-paciente'], { 
-        queryParams: { dni: dniBuscado } 
-      });
+    if (!this.buscarForm.valid) return;
+
+    const legajoValue = this.buscarForm.get('legajo')?.value;
+
+    // Por si viene como string desde el input
+    const nLegajo = Number(legajoValue);
+
+    if (Number.isNaN(nLegajo) || nLegajo <= 0) {
+      this.buscarForm.get('legajo')?.setErrors({ invalidNumber: true });
+      return;
     }
+
+    this.pacienteService.getByLegajo(nLegajo).subscribe({
+      next: (paciente: any) => {
+        console.log('Paciente encontrado:', paciente);
+        // por ahora solo log y cerramos
+        this.dialogRef.close(paciente);
+      },
+      error: (err: any) => {
+        console.error('Error buscando paciente por legajo:', err);
+        // opcional: mostrar un mensaje en el form
+        this.buscarForm.setErrors({ notFound: true });
+      }
+    });
   }
 
   cancelar(): void {

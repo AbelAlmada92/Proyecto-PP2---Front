@@ -1,33 +1,47 @@
 <div class="dialog-header">
-    <h2>BUSCAR PACIENTE</h2>
-    <button mat-icon-button (click)="cancelar()" class="close-button">
-        <mat-icon>close</mat-icon>
-    </button>
+  <h2>BUSCAR PACIENTE</h2>
+  <button mat-icon-button (click)="cancelar()" class="close-button">
+    <mat-icon>close</mat-icon>
+  </button>
 </div>
 
 <div class="dialog-content">
-    <form class="example-form" [formGroup]="buscarForm">
-        <mat-form-field class="example-full-width">
-            <mat-label>DNI del Paciente</mat-label>
-            <input matInput formControlName="dni" 
-                   placeholder="Ingrese el DNI" 
-                   type="text"
-                   maxlength="10">
-            <mat-error *ngIf="buscarForm.get('dni')?.hasError('required')">
-                El DNI es requerido
-            </mat-error>
-            <mat-error *ngIf="buscarForm.get('dni')?.hasError('maxlength')">
-                El DNI no puede tener más de 10 dígitos
-            </mat-error>
-        </mat-form-field>
+  <form class="example-form" [formGroup]="buscarForm">
+    <mat-form-field class="example-full-width">
+      <mat-label>N° de Legajo del Paciente</mat-label>
 
-        <div class="button-container">
-            <button mat-raised-button color="primary" 
-                    (click)="buscarPaciente()"
-                    [disabled]="!buscarForm.valid">
-                Buscar Paciente
-            </button>
-            <button mat-button type="button" (click)="cancelar()">Cancelar</button>
-        </div>
-    </form>
+      <input
+        matInput
+        formControlName="legajo"
+        placeholder="Ingrese el N° de legajo"
+        type="number"
+        min="1"
+      />
+
+      <mat-error *ngIf="buscarForm.get('legajo')?.hasError('required')">
+        El N° de legajo es requerido
+      </mat-error>
+
+      <mat-error *ngIf="buscarForm.get('legajo')?.hasError('min') || buscarForm.get('legajo')?.hasError('invalidNumber')">
+        Ingresá un N° de legajo válido (mayor a 0)
+      </mat-error>
+
+      <mat-error *ngIf="buscarForm.hasError('notFound')">
+        No se encontró un paciente con ese legajo
+      </mat-error>
+    </mat-form-field>
+
+    <div class="button-container">
+      <button
+        mat-raised-button
+        color="primary"
+        (click)="buscarPaciente()"
+        [disabled]="!buscarForm.valid"
+      >
+        Buscar Paciente
+      </button>
+
+      <button mat-button type="button" (click)="cancelar()">Cancelar</button>
+    </div>
+  </form>
 </div>

@@ -117,47 +117,49 @@
                 </div>
 
                 <div class="observacion-body">
-                  <!-- TEXTO view/edit -->
-                  <div class="texto-row" *ngIf="editingObservacionId !== o.idObservacion; else editMode">
-                    <p class="texto">
-                      <span class="label">Texto:</span>
-                      {{ o?.textoObservacion || 'Sin texto' }}
-                    </p>
+<!-- TEXTO view/edit -->
+<div class="texto-row" *ngIf="!canEdit || editingObservacionId !== o.idObservacion; else editMode">
+  <p class="texto">
+    <span class="label">Texto:</span>
+    {{ o?.textoObservacion || 'Sin texto' }}
+  </p>
 
-                    <button
-                      mat-icon-button
-                      class="icon-btn"
-                      type="button"
-                      aria-label="Editar texto"
-                      (click)="startEdit(o)"
-                    >
-                      <mat-icon>edit</mat-icon>
-                    </button>
-                  </div>
+  <!-- 👇 solo profesional ve el lápiz -->
+  <button
+    *ngIf="canEdit"
+    mat-icon-button
+    class="icon-btn"
+    type="button"
+    aria-label="Editar texto"
+    (click)="startEdit(o)"
+  >
+    <mat-icon>edit</mat-icon>
+  </button>
+</div>
 
-                  <ng-template #editMode>
-                    <div class="edit-box">
-                      <mat-form-field appearance="outline" class="texto-field">
-                        <mat-label>Texto</mat-label>
-                        <textarea matInput rows="3" [(ngModel)]="editTexto"></textarea>
-                      </mat-form-field>
+<ng-template #editMode>
+  <div class="edit-box">
+    <mat-form-field appearance="outline" class="texto-field">
+      <mat-label>Texto</mat-label>
+      <textarea matInput rows="3" [(ngModel)]="editTexto"></textarea>
+    </mat-form-field>
 
-                      <div class="edit-actions">
-                        <button mat-stroked-button type="button" (click)="cancelEdit()" [disabled]="savingEdit">
-                          Cancelar
-                        </button>
+    <div class="edit-actions">
+      <button mat-stroked-button type="button" (click)="cancelEdit()" [disabled]="savingEdit">
+        Cancelar
+      </button>
 
-                        <button
-                          mat-flat-button
-                          type="button"
-                          (click)="saveEdit(o)"
-                          [disabled]="savingEdit || !(editTexto?.trim())"
-                        >
-                          Guardar
-                        </button>
-                      </div>
-                    </div>
-                  </ng-template>
+      <button
+        mat-flat-button
+        type="button"
+        (click)="saveEdit(o)"
+        [disabled]="savingEdit || !(editTexto?.trim())"
+      >
+        Guardar
+      </button>
+    </div>
+  </div>
+</ng-template>
 
                   <div class="meta">
                     <p>

@@ -32,6 +32,7 @@ import { ObservacionesService, Observacion } from '../../services/observaciones.
 export class PagePacienteComponent implements OnInit {
   usuario: Paciente | any;
   pacienteEncontrado: boolean = true;
+  canEdit = false;
 
   observaciones: Observacion[] = [];
   observacionesLoading = false;
@@ -51,6 +52,7 @@ export class PagePacienteComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.canEdit = this.authService.esProfesional();
     this.route.queryParams.subscribe(params => {
       const idPacienteParam = params['idPaciente'];
 
@@ -110,6 +112,7 @@ export class PagePacienteComponent implements OnInit {
   }
 
   startEdit(o: Observacion): void {
+    if (!this.canEdit) return;
     this.editingObservacionId = o.idObservacion;
     this.editTexto = o.textoObservacion ?? '';
   }

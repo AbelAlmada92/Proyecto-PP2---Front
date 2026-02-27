@@ -5,8 +5,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { CommonModule } from '@angular/common';
-import { MatIcon } from '@angular/material/icon';
-import { Router } from '@angular/router';
+import { MatIconModule } from '@angular/material/icon';
 
 import { PacienteService } from '../../../services/paciente.service';
 
@@ -20,7 +19,7 @@ import { PacienteService } from '../../../services/paciente.service';
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
-    MatIcon
+    MatIconModule
   ],
   templateUrl: './dialog-buscar-paciente.component.html',
   styleUrls: ['./dialog-buscar-paciente.component.css']
@@ -31,8 +30,7 @@ export class DialogBuscarPacienteComponent {
   constructor(
     private fb: FormBuilder,
     private dialogRef: MatDialogRef<DialogBuscarPacienteComponent>,
-    private pacienteService: PacienteService,
-    private router: Router
+    private pacienteService: PacienteService
   ) {
     this.buscarForm = this.fb.group({
       legajo: ['', [Validators.required, Validators.min(1)]]
@@ -51,20 +49,12 @@ export class DialogBuscarPacienteComponent {
     }
 
     this.pacienteService.getById(idPaciente).subscribe({
-      next: (paciente) => {
-        this.dialogRef.close();
-        this.router.navigate(['/page-paciente'], {
-          queryParams: { idPaciente: paciente.idPaciente }
-        });
-      },
-      error: (err) => {
-        console.error('Error buscando paciente por id:', err);
-        this.buscarForm.setErrors({ notFound: true });
-      }
+      next: (paciente) => this.dialogRef.close(paciente.idPaciente),
+      error: () => this.buscarForm.setErrors({ notFound: true })
     });
   }
 
   cancelar(): void {
-    this.dialogRef.close();
+    this.dialogRef.close(null);
   }
 }

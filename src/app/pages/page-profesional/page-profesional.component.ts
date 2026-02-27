@@ -18,7 +18,7 @@ export class PageProfesionalComponent implements OnInit {
     private router: Router,
     private dialog: MatDialog,
     private authService: AuthService
-  ) { }
+  ) {}
 
   ngOnInit() {
     this.usuario = this.authService.getCurrentUser();
@@ -31,6 +31,15 @@ export class PageProfesionalComponent implements OnInit {
       height: 'auto',
       hasBackdrop: true,
       disableClose: false,
+      data: { mode: 'default' }
+    });
+
+    dialogRef.afterClosed().subscribe((idPaciente: number | null) => {
+      if (!idPaciente) return;
+
+      this.router.navigate(['/page-paciente'], {
+        queryParams: { idPaciente }
+      });
     });
   }
 

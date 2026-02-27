@@ -29,6 +29,10 @@ export class PacienteService {
     return this.http.get<Paciente[]>(`${this.baseUrl}/api/pacientes`);
   }
 
+  getById(idPaciente: number): Observable<Paciente> {
+    return this.http.get<Paciente>(`${this.baseUrl}/api/pacientes/${idPaciente}`);
+  }
+
   getByLegajo(nLegajo: number): Observable<Paciente> {
     return this.http.get<Paciente>(`${this.baseUrl}/api/pacientes/legajo/${nLegajo}`);
   }

@@ -1,134 +1,199 @@
+<!-- page-paciente.component.html -->
 <header>
-    <img src="https://imgs.search.brave.com/mDztPWayQWWrIPAy2Hm_FNfDjDVgayj73RTnUIZ15L0/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly90NC5m/dGNkbi5uZXQvanBn/LzAyLzE1Lzg0LzQz/LzM2MF9GXzIxNTg0/NDMyNV90dFg5WWlJ/SXllYVI3TmU2RWFM/TGpNQW15NEd2UEM2/OS5qcGc" alt="1" (click)="irAPerfil()">
-    <div class="btn-buscar" (click)="irAHistorial()">
-        <p>HISTORIAL</p>
-    </div>
+  <img
+    src="https://imgs.search.brave.com/mDztPWayQWWrIPAy2Hm_FNfDjDVgayj73RTnUIZ15L0/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly90NC5m/dGNkbi5uZXQvanBn/LzAyLzE1Lzg0LzQz/LzM2MF9GXzIxNTg0/NDMyNV90dFg5WWlJ/SXllYVI3TmU2RWFM/TGpNQW15NEd2UEM2/OS5qcGc"
+    alt="1"
+    (click)="irAPerfil()"
+  />
+
+  <div class="btn-buscar" (click)="irAHistorial()">
+    <p>HISTORIAL</p>
+  </div>
 </header>
+
 <div class="contenedor">
-    <div class="seccion-datos">
-        <div class="acordeon">
-            <mat-accordion>
-                <mat-expansion-panel (opened)="panelOpenState.set(true)" (closed)="panelOpenState.set(false)">
-                    <mat-expansion-panel-header>
-                        <mat-panel-title>DATOS DEL USUARIO</mat-panel-title>
-                        <mat-panel-description>
-                            Información personal
-                        </mat-panel-description>
-                    </mat-expansion-panel-header>
-                    
-                    <div class="contenedor-datos">
-                        <div class="datos">
-                            <label>
-                                <h2>Nombre</h2>
-                                <p>{{usuario?.nombre || 'No especificado'}}</p>
-                            </label>
-                        </div>
-                        <div class="datos">
-                            <label>
-                                <h2>F. nacimiento</h2>
-                                <p>{{ usuario?.fechaNacimiento || 'No especificado' }}</p>
-                            </label>
-                        </div>
-                        <div class="datos">
-                            <label>
-                                <h2>DNI</h2>
-                                <p>{{ usuario?.dni || 'No especificado' }}</p>
-                            </label>
-                        </div>
-                        <div class="datos">
-                            <label>
-                                <h2>Genero</h2>
-                                <p>{{ usuario?.genero || 'No especificado' }}</p>
-                            </label>
-                        </div>
-                        <div class="datos">
-                            <label>
-                                <h2>Telefono</h2>
-                                <p>1111111111</p>
-                            </label>
-                        </div>
-                        <div class="datos">
-                            <label>
-                                <h2>Direccion</h2>
-                                <p>{{ usuario?.direccion || 'No especificado' }}</p>
-                            </label>
-                        </div>
-                    </div>
-                </mat-expansion-panel>
+  <div class="seccion-datos">
+    <div class="acordeon">
+      <mat-accordion>
 
-                <mat-expansion-panel (opened)="panelOpenState.set(true)" (closed)="panelOpenState.set(false)">
-                    <mat-expansion-panel-header>
-                        <mat-panel-title>ANTECEDENTES PERSONALES</mat-panel-title>
-                        <mat-panel-description>
-                            Historial médico
-                        </mat-panel-description>
-                    </mat-expansion-panel-header>
-                    
-                    <div class="contenedor-datos">
-                        <div class="datos">
-                            <label>
-                                <h2>Alergias</h2>
-                                <p>{{ usuario?.alergias || 'No especificado' }}</p>
-                            </label>
-                        </div>
-                        <div class="datos">
-                            <label>
-                                <h2>Enfermedades crónicas</h2>
-                                <p>{{ usuario?.enfermedadesCronicas || 'No especificado' }}</p>
-                            </label>
-                        </div>
-                        <div class="datos">
-                            <label>
-                                <h2>Medicación actual</h2>
-                                <p>{{ usuario?.medicacionActual || 'No especificado' }}</p>
-                            </label>
-                        </div>
-                        <div class="datos">
-                            <label>
-                                <h2>Cirugías previas</h2>
-                                <p>{{ usuario?.cirugiasPrevias || 'No especificado' }}</p>
-                            </label>
-                        </div>
-                        <div class="datos">
-                            <label>
-                                <h2>Antecedentes familiares</h2>
-                                <p>{{ usuario?.antecedentesFamiliares || 'No especificado' }}</p>
-                            </label>
-                        </div>
-                    </div>
-                </mat-expansion-panel>
+        <!-- DATOS DEL USUARIO -->
+        <mat-expansion-panel (opened)="panelOpenState.set(true)" (closed)="panelOpenState.set(false)">
+          <mat-expansion-panel-header>
+            <mat-panel-title>DATOS DEL USUARIO</mat-panel-title>
+            <mat-panel-description>Información personal</mat-panel-description>
+          </mat-expansion-panel-header>
 
-                <mat-expansion-panel (opened)="panelOpenState.set(true)" (closed)="panelOpenState.set(false)">
-                    <mat-expansion-panel-header>
-                        <mat-panel-title>CONTACTO DE EMERGENCIA</mat-panel-title>
-                        <mat-panel-description>
-                            Datos de contacto
-                        </mat-panel-description>
-                    </mat-expansion-panel-header>
-                    
-                    <div class="contenedor-datos">
-                        <div class="datos">
-                            <label>
-                                <h2>Nombre</h2>
-                                <p>{{ usuario?.contactoEmergencia?.nombre || 'No especificado' }}</p>
-                            </label>
-                        </div>
-                        <div class="datos">
-                            <label>
-                                <h2>Parentesco</h2>
-                                <p>{{ usuario?.contactoEmergencia?.parentesco || 'No especificado'}}</p>
-                            </label>
-                        </div>
-                        <div class="datos">
-                            <label>
-                                <h2>Teléfono</h2>
-                                <p>{{ usuario?.contactoEmergencia?.parentesco || 'No especificado'}}</p>
-                            </label>
-                        </div>
+          <div class="contenedor-datos">
+            <div class="datos">
+              <label>
+                <h2>Nombre</h2>
+                <p>
+                  {{
+                    usuario
+                      ? ((usuario?.nombre || '') + ' ' + (usuario?.apellido || '')).trim() || 'No especificado'
+                      : 'No especificado'
+                  }}
+                </p>
+              </label>
+            </div>
+
+            <div class="datos">
+              <label>
+                <h2>F. nacimiento</h2>
+                <p>
+                  {{
+                    usuario?.fechaNacimiento
+                      ? (usuario.fechaNacimiento | date: 'dd/MM/yyyy')
+                      : 'No especificado'
+                  }}
+                </p>
+              </label>
+            </div>
+
+            <div class="datos">
+              <label>
+                <h2>DNI</h2>
+                <p>{{ usuario?.dni || 'No especificado' }}</p>
+              </label>
+            </div>
+
+            <div class="datos">
+              <label>
+                <h2>Genero</h2>
+                <p>{{ usuario?.sexoBio || 'No especificado' }}</p>
+              </label>
+            </div>
+
+            <div class="datos">
+              <label>
+                <h2>Telefono</h2>
+                <p>{{ usuario?.telefonoPaciente || 'No especificado' }}</p>
+              </label>
+            </div>
+
+            <div class="datos">
+              <label>
+                <h2>Direccion</h2>
+                <p>{{ usuario?.domicilio || 'No especificado' }}</p>
+              </label>
+            </div>
+          </div>
+        </mat-expansion-panel>
+
+        <!-- OBSERVACIONES -->
+        <mat-expansion-panel (opened)="panelOpenState.set(true)" (closed)="panelOpenState.set(false)">
+          <mat-expansion-panel-header>
+            <mat-panel-title>OBSERVACIONES</mat-panel-title>
+            <mat-panel-description>Antecedentes / notas médicas</mat-panel-description>
+          </mat-expansion-panel-header>
+
+          <div class="contenedor-datos">
+            <div class="estado" *ngIf="observacionesLoading">
+              <p>Cargando observaciones...</p>
+            </div>
+
+            <div class="estado" *ngIf="!observacionesLoading && (!observaciones || observaciones.length === 0)">
+              <p>No hay observaciones registradas.</p>
+            </div>
+
+            <div class="observaciones" *ngIf="!observacionesLoading && observaciones?.length">
+              <div class="observacion-card" *ngFor="let o of observaciones">
+                <div class="observacion-header">
+                  <div class="izq">
+                    <h3>Observación #{{ o?.idObservacion || '—' }}</h3>
+                    <p class="fecha">
+                      {{
+                        o?.fechaObservacion
+                          ? (o.fechaObservacion | date:'dd/MM/yyyy HH:mm')
+                          : 'Fecha no especificada'
+                      }}
+                    </p>
+                  </div>
+
+                  <div class="der">
+                    <span class="chip">Legajo paciente: {{ o?.idPaciente ?? '—' }}</span>
+                    <span class="chip">Id Medico: {{ o?.idMedico ?? '—' }}</span>
+                  </div>
+                </div>
+
+                <div class="observacion-body">
+                  <!-- TEXTO view/edit -->
+                  <div class="texto-row" *ngIf="editingObservacionId !== o.idObservacion; else editMode">
+                    <p class="texto">
+                      <span class="label">Texto:</span>
+                      {{ o?.textoObservacion || 'Sin texto' }}
+                    </p>
+
+                    <button
+                      mat-icon-button
+                      class="icon-btn"
+                      type="button"
+                      aria-label="Editar texto"
+                      (click)="startEdit(o)"
+                    >
+                      <mat-icon>edit</mat-icon>
+                    </button>
+                  </div>
+
+                  <ng-template #editMode>
+                    <div class="edit-box">
+                      <mat-form-field appearance="outline" class="texto-field">
+                        <mat-label>Texto</mat-label>
+                        <textarea matInput rows="3" [(ngModel)]="editTexto"></textarea>
+                      </mat-form-field>
+
+                      <div class="edit-actions">
+                        <button mat-stroked-button type="button" (click)="cancelEdit()" [disabled]="savingEdit">
+                          Cancelar
+                        </button>
+
+                        <button
+                          mat-flat-button
+                          type="button"
+                          (click)="saveEdit(o)"
+                          [disabled]="savingEdit || !(editTexto?.trim())"
+                        >
+                          Guardar
+                        </button>
+                      </div>
                     </div>
-                </mat-expansion-panel>
-            </mat-accordion>
-        </div>
+                  </ng-template>
+
+                  <div class="meta">
+                    <p>
+                      <span class="label">Paciente:</span>
+                      {{
+                        o?.paciente
+                          ? (((o.paciente?.nombre || '') + ' ' + (o.paciente?.apellido || '')).trim() || 'No especificado')
+                          : 'No especificado'
+                      }}
+                      <span class="muted">
+                        (DNI: {{ o?.paciente?.dni ?? '—' }}
+                      </span>
+                    </p>
+
+                    <p>
+                      <span class="label">Médico:</span>
+                      {{
+                        o?.medico
+                          ? (((o.medico?.nombre || '') + ' ' + (o.medico?.apellido || '')).trim() || 'No especificado')
+                          : 'No especificado'
+                      }}
+                      <span class="muted">
+                        (Matrícula: {{ o?.medico?.matricula ?? '—' }}, Especialidad: {{ o?.medico?.especialidad ?? '—' }})
+                      </span>
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </mat-expansion-panel>
+
+      </mat-accordion>
     </div>
-    <button (click)="logout()">CERRAR SESION</button>
+  </div>
+
+  <button (click)="logout()">CERRAR SESION</button>
 </div>

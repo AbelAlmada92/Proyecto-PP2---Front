@@ -41,24 +41,20 @@ export class DialogBuscarPacienteComponent {
     if (!this.buscarForm.valid) return;
 
     const legajoValue = this.buscarForm.get('legajo')?.value;
+    const idPaciente = Number(legajoValue);
 
-    // Por si viene como string desde el input
-    const nLegajo = Number(legajoValue);
-
-    if (Number.isNaN(nLegajo) || nLegajo <= 0) {
+    if (Number.isNaN(idPaciente) || idPaciente <= 0) {
       this.buscarForm.get('legajo')?.setErrors({ invalidNumber: true });
       return;
     }
 
-    this.pacienteService.getByLegajo(nLegajo).subscribe({
-      next: (paciente: any) => {
+    this.pacienteService.getById(idPaciente).subscribe({
+      next: (paciente) => {
         console.log('Paciente encontrado:', paciente);
-        // por ahora solo log y cerramos
         this.dialogRef.close(paciente);
       },
-      error: (err: any) => {
-        console.error('Error buscando paciente por legajo:', err);
-        // opcional: mostrar un mensaje en el form
+      error: (err) => {
+        console.error('Error buscando paciente por id:', err);
         this.buscarForm.setErrors({ notFound: true });
       }
     });
